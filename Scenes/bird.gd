@@ -12,14 +12,14 @@ signal game_started
 
 var max_speed: float = 400.0
 var is_started: bool = false
-var should_proces_input: bool = true
+var should_process_input: bool = true
 
 func _ready() -> void:
 	velocity = Vector2.ZERO
 	animation_player.play("idle")
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("jump") && should_proces_input:
+	if Input.is_action_just_pressed("jump") && should_process_input:
 		if !is_started:
 			game_started.emit()
 			animation_player.play("flap_wings")
@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	if !is_started:
 		return
 	
-	velocity.y = min(velocity.y + gravity * delta, max_speed) 
+	velocity.y = min(velocity.y + gravity * delta, max_speed)
 	
 	move_and_collide(velocity * delta)
 	
@@ -44,11 +44,11 @@ func rotate_bird() -> void:
 	if velocity.y > 0 && rad_to_deg(rotation) < 90.0:
 		rotation += rotation_speed * deg_to_rad(1.0)
 	# Rotate upwards when rising
-	elif velocity.y < 0 && rad_to_deg(rotation) > - 30.0:
+	elif velocity.y < 0 && rad_to_deg(rotation) > -30.0:
 		rotation -= rotation_speed * deg_to_rad(1.0)
 
 func kill() -> void:
-	should_proces_input = false
+	should_process_input = false
 
 func stop() -> void:
 	animation_player.stop()
