@@ -10,12 +10,16 @@ var points = 0
 
 func _ready() -> void:
 	bird.game_started.connect(on_game_started)
-	ground.bird_crashed.connect(end_game)
+	ground.bird_crashed.connect(crash_ground)
 	pipe_spawner.bird_crashed.connect(end_game)
 	pipe_spawner.point_scored.connect(on_point_scored)
 
 func on_game_started() -> void:
 	pipe_spawner.start_spawning_pipes()
+
+func crash_ground() -> void:
+	end_game()
+	print("You scored %d points" % points)
 
 func end_game() -> void:
 	if fade != null:

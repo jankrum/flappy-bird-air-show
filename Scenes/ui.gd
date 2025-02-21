@@ -13,7 +13,6 @@ func update_points(points: int) -> void:
 
 func on_game_over() -> void:
 	game_over_box.visible = true
-	#points
 
 func _on_button_pressed() -> void:
 	get_tree().reload_current_scene()
