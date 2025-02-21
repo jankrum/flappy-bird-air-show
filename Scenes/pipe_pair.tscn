@@ -47,6 +47,7 @@ position = Vector2(42, 0)
 shape = SubResource("RectangleShape2D_s6p4r")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(42, 0)
 
 [connection signal="body_entered" from="TopPipe" to="." method="_on_body_entered"]
 [connection signal="body_entered" from="BottomPipe" to="." method="_on_body_entered"]
